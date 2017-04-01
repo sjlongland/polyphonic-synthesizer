@@ -1,0 +1,11 @@
+# vim: set filetype=make:
+# Makefile for building synthesizer test application on PC
+# Requires libao
+
+LIBS=-lao
+
+pctest: poly.pc.o pctest.pc.o
+	$(CC) $(LIBS) $(LDFLAGS) -o $@ $^
+
+%.pc.o: %.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
